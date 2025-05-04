@@ -2,4 +2,6 @@
     - create ci.yml file 
     - create virtual env 
     - .gitignore was creating during the creation of the repo on github, choising python template 
+
+# pas obliger de creer une branche develop, avant d'ecrire le ci, tout depend du projet et de la taille de l'equipe de dev
     

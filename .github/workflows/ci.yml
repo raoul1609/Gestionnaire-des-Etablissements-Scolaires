@@ -2,22 +2,21 @@ name: CI-Gestionnaire-des-Etablissements
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main]
     paths: 
-      - 'tp_python_grp3/**'
-      - '.github/workflows/tp-python-ci.yml' # Aussi si le workflow lui-même change
+      - '.github/workflows/ci.yml' 
+
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main]
     paths:
-      - 'tp_python_grp3/**'
-      - '.github/workflows/tp-python-ci.yml'
+      - '.github/workflows/ci.yml'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./tp_python_grp3
+        working-directory: ./gestion_des_etablissements
     strategy:
       matrix:
         python-version: ["3.9", "3.10"]
@@ -31,7 +30,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         cache: 'pip'
-        cache-dependency-path: 'tp_python_grp3/requirements.txt' # Chemin vers le fichier pour le cache
+        cache-dependency-path: 'gestion_des_etablissements/requirements.txt'
 
     - name: Install Dependencies
       run: |
@@ -40,7 +39,7 @@ jobs:
 
     - name: Run Tests for tp python
       env: 
-        DJANGO_SETTINGS_MODULE: 'tp_python_grp3.settings_test'
+        DJANGO_SETTINGS_MODULE: 'gestion_des_etablissements.settings_test'
         SECRET_KEY: 'django-insecure-a!_cw%2_00^i4mg1fpdeh$8r1xs%h(5#_gusm=6i9ll)i2#yg%'
         DATABASE_URL: 'sqlite:///:memory:'
       run: |
