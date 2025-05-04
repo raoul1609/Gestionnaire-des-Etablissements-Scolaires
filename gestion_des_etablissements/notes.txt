@@ -1,0 +1,5 @@
+# setup environnement :
+    - create ci.yml file 
+    - create virtual env 
+    - .gitignore was creating during the creation of the repo on github, choising python template 
+    
